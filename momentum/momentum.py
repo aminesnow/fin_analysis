@@ -93,20 +93,22 @@ if __name__=="__main__":
     # parse args
     parser = argparse.ArgumentParser(description="train mnist",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--n-estimators', type=int, default=10,
+    parser.add_argument('--n_estimators', type=int, default=10000,
                         help='the number of estimators')
-    parser.add_argument('--learning-ate', type=float, default=0.01,
+    parser.add_argument('--learning_ate', type=float, default=0.005,
                     help='the learning rate') 
-    parser.add_argument('--num-leaves', type=int, default=52,
+    parser.add_argument('--num_leaves', type=int, default=52,
                     help='number of leaves')
-    parser.add_argument('--max-depth', type=int, default=12,
+    parser.add_argument('--max_depth', type=int, default=12,
                 help='max depth')
+    args = parser.parse_args()
+
     params = {
         'boosting_type': 'goss',
-        'n_estimators': 10000,
-        'learning_rate': 0.005,
-        'num_leaves': 52,
-        'max_depth': 12,
+        'n_estimators': args.n_estimators,
+        'learning_rate': args.learning_ate,
+        'num_leaves': args.num_leaves,
+        'max_depth': args.max_depth,
         'subsample_for_bin': 24000,
         'reg_alpha': 0.45,
         'reg_lambda': 0.48,
